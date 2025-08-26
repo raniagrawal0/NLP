@@ -1,0 +1,27 @@
+// Plural Morphology FST
+digraph {
+	START [label=START]
+	STEM [label=STEM]
+	END_S [label=END_S]
+	END_ES [label=END_ES]
+	END_IES [label=END_IES]
+	FINAL_SG [label=FINAL_SG shape=doublecircle]
+	FINAL_PL [label=FINAL_PL shape=doublecircle]
+	START -> STEM [label="s / ε"]
+	START -> STEM [label="a–z except s / copy letter"]
+	STEM -> END_ES [label="e / ε"]
+	STEM -> END_IES [label="i / ε"]
+	STEM -> FINAL_PL [label="a–z except e,i,x,z,s,h / copy letter"]
+	END_ES -> FINAL_PL [label="s,x,z,o / copy letter"]
+	END_ES -> FINAL_PL [label="h + lookahead c or s / copy ch or sh"]
+	END_IES -> FINAL_PL [label="consonant / copy letter"]
+	FINAL_PL -> FINAL_PL [label="a–z / copy letter"]
+	FINAL_PL -> FINAL_PL [label="a–z / copy letter"]
+	FINAL_SG -> FINAL_SG [label="a–z / copy letter"]
+	FINAL_PL [label="FINAL_PL
+(final +N+PL)" color=black shape=doublecircle]
+	FINAL_PL [label="FINAL_PL
+(final +N+PL)" color=black shape=doublecircle]
+	FINAL_SG [label="FINAL_SG
+(final +N+SG)" color=black shape=doublecircle]
+}
