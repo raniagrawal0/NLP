@@ -1,0 +1,4 @@
+Total sentences: 10000
+Train: 8000
+Val: 1000
+Test: 1000
